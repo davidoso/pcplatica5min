@@ -1,9 +1,9 @@
 <?php
     class Jefe_m extends CI_Model
     {
-        
+
         /* -------------------------------------------------------------- contenido -------------------------------------------------------------- */
-        
+
         public function get_contenido($platica)
         {
             $var=$this->db->query("
@@ -24,25 +24,25 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_contenido($nombre, $ruta, $tipo, $platica)
         {
             $this->db->query("
                 call spInsertContenido('$nombre', '$ruta', '$tipo', '$platica')
             ");
         }
-        
+
         public function update_contenido($contenido, $nombre, $tipo_contenido, $eliminar)
         {
             $this->db->query("
                 call spUpdateContenido('$contenido','$nombre','$tipo_contenido','$eliminar')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / contenido -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- platica -------------------------------------------------------------- */
-        
+
         public function get_last_platicas()
         {
             $var=$this->db->query("
@@ -60,7 +60,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_busqueda_platicas($tema)
         {
             $var=$this->db->query("
@@ -78,7 +78,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_platica($platica)
         {
             $var=$this->db->query("
@@ -97,25 +97,27 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_platica($tema, $fecha_inicio, $fecha_final)
         {
+            $tema = trim($tema);
             $this->db->query("
                 call spInsertPlatica('$tema', '$fecha_inicio', '$fecha_final')
             ");
         }
-        
+
         public function update_platica($platica, $tema, $fecha_inicio, $fecha_final)
         {
+            $tema = trim($tema);
             $this->db->query("
                 call spUpdatePlatica('$platica', '$tema', '$fecha_inicio', '$fecha_final')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / platica -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- tipo_contenido -------------------------------------------------------------- */
-        
+
         public function get_tipo_contenido()
         {
             $var=$this->db->query("
@@ -131,25 +133,25 @@
             ");
             return $var->result();
         }
-        
+
         /* -------------------------------------------------------------- / tipo_contenido -------------------------------------------------------------- */
-        
+
         public function update_trabajo($id,$familia,$equipo,$inicio,$turno,$descripcion,$termino,$pendientes,$usuario,$personal)
         {
             $this->db->query("
                 call spUpdateTrabajo('$id','$familia','$equipo','$inicio','$turno','$descripcion','$termino','$pendientes','$usuario','$personal')
             ");
         }
-        
+
         public function delete_trabajo($trabajo,$opcion)
         {
             $this->db->query("
                 call spUDeleteTrabajo('$trabajo','$opcion')
             ");
         }
-        
+
         /* -------------------------------------------------------------- usuario -------------------------------------------------------------- */
-        
+
         public function get_usuarios()
         {
             $var=$this->db->query("
@@ -163,55 +165,55 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_usuario($usuario)
         {
             $this->db->query("
                 call spInsertUsuario('$usuario')
             ");
         }
-        
+
         public function delete_usuario($usuario,$erased)
         {
             $this->db->query("
                 call spUDeleteUsuario('$usuario','$erased')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / usuario -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- API WEB -------------------------------------------------------------- */
-        
+
         public function get_familias()
         {
-            $ch = curl_init(); 
-            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/FamiliasEquipos"); 
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/FamiliasEquipos");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos jala
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"");
-	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$output = curl_exec($ch); // la variable output contiene el json raw
-            
+
             $data=json_decode($output);
-            
+
             return $data;
         }
-        
+
         public function get_equipos($familia)
         {
-            $ch = curl_init(); 
-            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/EquiposFamilia"); 
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/EquiposFamilia");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos jala
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"familia=$familia");
-	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$output = curl_exec($ch); // la variable output contiene el json raw
-            
+
             $data=json_decode($output);
-            
+
             return $data;
         }
-        
+
         /* -------------------------------------------------------------- /API WEB -------------------------------------------------------------- */
     }
 ?>

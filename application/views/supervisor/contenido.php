@@ -1,9 +1,9 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-            
+
                <!-- Botón regresar -->
                 <div class="row mx-auto mt-5">
                     <div class="col-md-5">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <!-- / Botón regresar -->
-                
+
             <?php
                 foreach ($contenido as $c)
                 {
@@ -37,7 +37,7 @@
                 </div>
             <?php
                             break; // documento
-                        case 'Vídeo':
+                        case 'Video':
             ?>
                 <div class="row justify-content-center mt-3">
                     <div class="col-md-12">
@@ -62,7 +62,7 @@
                     } // cierra switch de tipo
                 } // cierra foreach contenido
             ?>
-                
+
                 <div class="row justify-content-center my-5">
                     <div class="col-md-3">
                         <a href="<?php echo site_url('Supervisor/load_reunion?r=').$this->input->get('r').'&p='.$this->input->get('p'); ?>">
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                 </div>
-            
+
             </div>
-        
+
         <!-- /BODY  -->

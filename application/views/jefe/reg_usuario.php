@@ -1,11 +1,11 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row">
-                    <div class="col-md-4 mt-3"> <!-- Formulario para el egistro de las platicas -->
+                    <div class="col-md-4 mt-3"> <!-- Formulario para el registro de las platicas -->
                         <div class="row justify-content-center">
                             <h3>Nuevo Usuario</h3>
                         </div>
@@ -23,7 +23,7 @@
                                 <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fas fa-pencil-alt"></i> Registrar</button>
                             </div>
                         </form>
-                    </div> <!-- / Formulario para el egistro de las platicas -->
+                    </div> <!-- / Formulario para el registro de las platicas -->
                     <div class="col-md-8 mt-3"> <!-- Platicas registradas -->
                         <div class="row justify-content-center">
                             <h3>Usuarios Registrados</h3>
@@ -75,5 +75,5 @@
                     </div> <!-- / Platicas registradas -->
                 </div>
             </div>
-            
+
         <!-- /BODY  -->

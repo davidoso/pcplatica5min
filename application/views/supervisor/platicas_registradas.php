@@ -1,9 +1,9 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row justify-content-center mt-4">
                     <h3>Reuniones registradas</h3>
                 </div>
@@ -12,10 +12,10 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">Tema</th>
-                                    <th scope="col" class="text-center">Fecha</th>
-                                    <th scope="col" class="text-center">Hora</th>
-                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center align-middle">Tema</th>
+                                    <th scope="col" class="text-center align-middle">Fecha</th>
+                                    <th scope="col" class="text-center align-middle">Hora</th>
+                                    <th scope="col" class="text-center align-middle" width="5%"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,7 +27,7 @@
                                     <td class="text-center align-middle"><?php echo $r->tema; ?></td>
                                     <td class="text-center align-middle"><?php echo $r->fecha; ?></td>
                                     <td class="text-center align-middle"><?php echo $r->hora; ?></td>
-                                    <td class="text-center align-middle">
+                                    <td class="text-center align-middle" width="5%">
                                         <a href="<?php echo site_url('Supervisor/load_reunion?r=').$r->id.'&p='.$r->id_platica; ?>">
                                             <button type="button" class="btn btn-info rounded-0"><i class="fas fa-eye"></i> Ver más</button>
                                         </a>
@@ -40,8 +40,7 @@
                         </table>
                     </div>
                 </div>
-                
+
             </div>
-            
+
         <!-- /BODY  -->
-        

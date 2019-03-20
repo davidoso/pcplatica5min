@@ -1,17 +1,17 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row justify-content-center mx-auto mt-5">
                     <h4 class="text-muted">Tema</h4>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto">
                     <h2><?php echo $platica[0]->tema; ?></h2>
                 </div>
-                
+
                 <form role="form" method="POST" action="<?php echo site_url('Supervisor/insert_reunion'); ?>">
                     <div class="row justify-content-center mt-3">
                         <div class="col-lg-6">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </form>
-                
+
             </div>
-            
+
         <!-- /BODY  -->

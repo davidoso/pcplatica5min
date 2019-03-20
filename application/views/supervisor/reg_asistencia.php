@@ -1,9 +1,9 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <!-- Botón regresar -->
                 <div class="row mx-auto mt-5">
                     <div class="col-md-5">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <!-- / Botón regresar -->
-                
+
                 <form role="form" method="get" action="<?php echo site_url('Supervisor/reg_participacion_tarjeta'); ?>">
                     <div class="row justify-content-center mx-auto mt-3">
                         <div class="col-md-12">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </form>
-                
+
                 <form role="form" method="get" action="<?php echo site_url('Supervisor/reg_participacion_codigo'); ?>">
                     <div class="row justify-content-center mx-auto mt-5">
                         <a href="#codigo_empleado" data-toggle="collapse">
@@ -55,13 +55,13 @@
                         </div>
                     </div>
                 </form>
-                
+
                  <!-- Participación -->
-                
+
                 <div class="row justify-content-center mx-auto mt-5">
                     <h4>Evidencia de participación</h4>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto mt-1">
                     <div class="col-md-12">
                         <div class="table-responsive mt-2">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-            
+
             </div>
-        
+
         <!-- /BODY  -->

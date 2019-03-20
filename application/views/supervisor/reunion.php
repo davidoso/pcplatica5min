@@ -1,19 +1,19 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <!-- Botón regresar -->
                 <div class="row mx-auto mt-5">
                     <div class="col-md-8">
                         <a href="<?php echo site_url('Supervisor/platicas_registradas'); ?>">
-                            <button type="button" class="btn btn-danger rounded-0"><i class="fas fa-undo-alt"></i> Reuniones Registradas</button>
+                            <button type="button" class="btn btn-danger rounded-0"><i class="fas fa-undo-alt"></i> Reuniones registradas</button>
                         </a>
                     </div>
                 </div>
                 <!-- / Botón regresar -->
-                
+
                 <div class="row justify-content-center mx-auto mt-3">
                     <h3>Tema: <?php echo $platica[0]->tema; ?></h3>
                     <div class="col-md-12">
@@ -21,10 +21,10 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">Fecha</th>
-                                        <th scope="col" class="text-center">Hora</th>
-                                        <th scope="col" class="text-center">Semana</th>
-                                        <th scope="col" class="text-center">Empresa</th>
+                                        <th scope="col" class="text-center align-middle">Fecha</th>
+                                        <th scope="col" class="text-center align-middle">Hora</th>
+                                        <th scope="col" class="text-center align-middle">Semana</th>
+                                        <th scope="col" class="text-center align-middle">Empresa</th>
                                         <!--<th scope="col" class="text-center">Supervisor</th>-->
                                     </tr>
                                 </thead>
@@ -46,9 +46,9 @@
                         <button type="button" class="btn btn-warning btn-block rounded-0" data-toggle="modal" data-target="#editar_reunion"><i class="fas fa-edit"></i> Editar</button>
                     </div>
                 </div>
-                
+
                 <!-- Contenido -->
-                
+
                 <div class="row justify-content-center mx-auto mt-5">
                     <h2>Contenido</h2>
                 </div>
@@ -69,13 +69,13 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Participación -->
-                
+
                 <div class="row justify-content-center mx-auto mt-5">
                     <h2>Evidencia de participación</h2>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto mt-2">
                     <div class="col-md-12">
                         <div class="table-responsive mt-4">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto mt-2">
                     <div class="col-md-5">
                         <a href="<?php echo site_url('Supervisor/reg_participacion?r=').$this->input->get('r').'&p='.$this->input->get('p'); ?>">
@@ -114,14 +114,14 @@
                         </a>
                     </div>
                 </div>
-            
+
             <!-- Modal "editar plática" -->
             <form role="form" method="POST" action="<?php echo site_url('Supervisor/update_reunion'); ?>">
                 <div class="modal fade" id="editar_reunion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header bg-warning">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Editar Reunión</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Editar reunión</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -165,9 +165,5 @@
                 </div>
             </form>
             <!-- /Modal "editar plática" -->
-            
+
         <!-- /BODY  -->
-        
-        <script type="text/javascript">
-            //window.onbeforeunload = function() { return "Your work will be lost."; };
-        </script>

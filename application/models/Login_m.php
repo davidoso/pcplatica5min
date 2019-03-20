@@ -10,7 +10,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_usuario($usuario)
         {
             $var=$this->db->query("
@@ -23,24 +23,24 @@
             ");
             return $var->result();
         }
-        
+
         /* -------------------------------------------------------------- API WEB -------------------------------------------------------------- */
-        
+
         public function login_apiweb($usuario, $contrasena)
         {
-            $ch = curl_init(); 
-            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/Valida_Usuario"); 
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/Valida_Usuario");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos funciona
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"usuario=$usuario&contrasena=$contrasena");
-	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$output = curl_exec($ch); // la variable output contiene el json en formato raw
-            
+
             $data=json_decode($output);
-            
+
             return $data;
         }
-        
+
         /* -------------------------------------------------------------- /API WEB -------------------------------------------------------------- */
     }
 ?>

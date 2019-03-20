@@ -1,27 +1,27 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row justify-content-center mx-auto mt-5">
                     <label class="participacion_headline">Empleado:</label>
                 </div>
                 <div class="row justify-content-center mx-auto mt-1">
                     <label class="font-weight-bold participacion_line"><?php echo $empleado[0]->nombre; ?></label>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto mt-2">
                     <label class="participacion_headline">Puesto:</label>
                 </div>
                 <div class="row justify-content-center mx-auto mt-1">
                     <label class="font-weight-bold participacion_line"><?php echo $empleado[0]->Descripcion; ?></label>
                 </div>
-                
+
                 <div class="row justify-content-center mx-auto mt-3">
-                    <p class="text-center">Acepto haber leído y entendido el contenido de la Platica de 5 minutos.</p>
+                    <p class="text-center">Acepto haber leído y entendido el contenido de la Plática de 5 minutos.</p>
                 </div>
-                
+
                 <form role="form" method="post" action="<?php echo site_url('Supervisor/insert_participacion'); ?>">
                     <div class="row justify-content-center mx-auto mt-3">
                         <input type="hidden" name="codigo" value="<?php echo $empleado[0]->codigo; ?>">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </form>
-            
+
             </div>
-        
+
         <!-- /BODY  -->

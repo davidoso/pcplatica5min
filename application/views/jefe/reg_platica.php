@@ -1,11 +1,11 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row">
-                    <div class="col-md-4 mt-3"> <!-- Formulario para el egistro de las platicas -->
+                    <div class="col-md-4 mt-3"> <!-- Formulario para el registro de las platicas -->
                         <div class="row justify-content-center">
                             <h3>Nueva Plática</h3>
                         </div>
@@ -41,7 +41,7 @@
                                 <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fas fa-pencil-alt"></i> Registrar</button>
                             </div>
                         </form>
-                    </div> <!-- / Formulario para el egistro de las platicas -->
+                    </div> <!-- / Formulario para el registro de las platicas -->
                     <div class="col-md-8 mt-3"> <!-- Platicas registradas -->
                         <div class="row justify-content-center">
                             <h3>Últimas Pláticas Registradas</h3>
@@ -51,10 +51,10 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-center">Tema</th>
-                                            <th scope="col" class="text-center">Fecha Inicio</th>
-                                            <th scope="col" class="text-center">Fecha Término</th>
-                                            <th scope="col" class="text-center"></th>
+                                            <th scope="col" class="text-center align-middle">Tema</th>
+                                            <th scope="col" class="text-center align-middle">Fecha de inicio</th>
+                                            <th scope="col" class="text-center align-middle">Fecha de término</th>
+                                            <th scope="col" class="text-center align-middle" width="5%"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,7 +66,7 @@
                                             <td class="text-center align-middle"><?php echo $p->tema; ?></td>
                                             <td class="text-center align-middle"><?php echo $p->fecha_inicio; ?></td>
                                             <td class="text-center align-middle"><?php echo $p->fecha_final; ?></td>
-                                            <td class="text-center align-middle">
+                                            <td class="text-center align-middle" width="5%">
                                                 <a href="<?php echo site_url('Jefe/platica?p=').$p->id; ?>">
                                                     <button type="button" class="btn btn-info rounded-0"><i class="fas fa-info-circle"></i> Ver más</button>
                                                 </a>
@@ -87,5 +87,5 @@
                     </div> <!-- / Platicas registradas -->
                 </div>
             </div>
-            
+
         <!-- /BODY  -->

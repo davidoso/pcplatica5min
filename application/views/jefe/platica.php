@@ -1,9 +1,9 @@
     <body>
-        
+
         <!-- BODY -->
-           
+
             <div class="container my-3">
-                
+
                 <div class="row justify-content-center mt-5">
                     <h3>Plática de cinco minutos</h3>
                     <div class="col-md-12">
@@ -11,11 +11,11 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">Tema</th>
-                                        <th scope="col" class="text-center">Fecha Inicio</th>
-                                        <th scope="col" class="text-center">Fecha Término</th>
-                                        <th scope="col" class="text-center">Estatus</th>
-                                        <th scope="col" class="text-center"></th>
+                                        <th scope="col" class="text-center align-middle">Tema</th>
+                                        <th scope="col" class="text-center align-middle">Fecha de inicio</th>
+                                        <th scope="col" class="text-center align-middle">Fecha de término</th>
+                                        <th scope="col" class="text-center align-middle">Estatus</th>
+                                        <th scope="col" class="text-center align-middle" width="5%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -24,7 +24,7 @@
                                         <td class="text-center align-middle"><?php echo $platica[0]->fecha_inicio; ?></td>
                                         <td class="text-center align-middle"><?php echo $platica[0]->fecha_final; ?></td>
                                         <th class="text-center align-middle <?php if($platica[0]->estatus=='VIGENTE'){echo 'text-success';}else{echo 'text-danger';} ?> "><?php echo $platica[0]->estatus; ?></th>
-                                        <td class="text-center align-middle">
+                                        <td class="text-center align-middle" width="5%">
                                             <button type="button" class="btn btn-warning rounded-0" data-toggle="modal" data-target="#editar_platica"><i class="fas fa-edit"></i> Editar</button>
                                         </td>
                                     </tr>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row mt-5 justify-content-center">
                     <h3>Contenido</h3>
                     <div class="col-md-12">
@@ -41,10 +41,10 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">Nombre</th>
-                                        <th scope="col" class="text-center">Tipo</th>
-                                        <th scope="col" class="text-center">Formato</th>
-                                        <th scope="col" class="text-center"></th>
+                                        <th scope="col" class="text-center align-middle">Nombre</th>
+                                        <th scope="col" class="text-center align-middle">Tipo</th>
+                                        <th scope="col" class="text-center align-middle">Formato</th>
+                                        <th scope="col" class="text-center align-middle" width="5%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +60,7 @@
                                         </td>
                                         <td class="text-center align-middle"><?php echo $c->tipo; ?></td>
                                         <td class="text-center align-middle"><?php echo $c->formato; ?></td>
-                                        <td class="text-center align-middle">
+                                        <td class="text-center align-middle" width="5%">
                                         <?php
                                             if($c->erased!=0)
                                             {
@@ -77,7 +77,7 @@
                                         ?>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- Modal "editar contenido" -->
                                     <form role="form" method="POST" action="<?php echo site_url('Jefe/update_contenido'); ?>">
                                         <div class="modal fade" id="<?php echo 'editar_contenido'.$c->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -139,7 +139,7 @@
                                         </div>
                                     </form>
                                     <!-- /Modal "editar contenido" -->
-                                    
+
                                     <?php
                                         } // cierra foreach contenido
                                     ?>
@@ -151,16 +151,16 @@
                         <button type="button" class="btn btn-primary btn-block rounded-0" data-toggle="modal" data-target="#new_contenido"><i class="fas fa-plus-square"></i> Añadir contenido</button>
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <!-- Modal "editar plática" -->
             <form role="form" method="POST" action="<?php echo site_url('Jefe/update_platica'); ?>">
                 <div class="modal fade" id="editar_platica" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header bg-warning">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Editar Plática</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Editar plática</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -204,7 +204,7 @@
                 </div>
             </form>
             <!-- /Modal "editar plática" -->
-            
+
             <!-- Modal "añadir contenido" -->
             <!--<form role="form" method="POST" action="<?php //echo site_url('Jefe/insert_contenido'); ?>">-->
             <?php echo form_open_multipart('Jefe/insert_contenido'); ?>
@@ -267,9 +267,5 @@
             <!--</form>-->
             <?php echo form_close(); ?>
             <!-- /Modal "añadir contenido" -->
-            
+
         <!-- /BODY  -->
-        
-        <script type="text/javascript">
-            //window.onbeforeunload = function() { return "Your work will be lost."; };
-        </script>

@@ -1,7 +1,7 @@
 <?php
     class Supervisor_m extends CI_Model
     {
-        
+
         public function get_last_id()
         {
             $var=$this->db->query("
@@ -9,9 +9,9 @@
             ");
             return $var->result();
         }
-        
+
         /* -------------------------------------------------------------- contenido -------------------------------------------------------------- */
-        
+
         public function get_contenido($platica)
         {
             $var=$this->db->query("
@@ -34,25 +34,25 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_contenido($nombre, $ruta, $tipo, $platica)
         {
             $this->db->query("
                 call spInsertContenido('$nombre', '$ruta', '$tipo', '$platica')
             ");
         }
-        
+
         public function update_contenido($contenido, $nombre, $tipo_contenido, $eliminar)
         {
             $this->db->query("
                 call spUpdateContenido('$contenido','$nombre','$tipo_contenido','$eliminar')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / contenido -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- participacion -------------------------------------------------------------- */
-        
+
         public function get_participaciones($reunion)
         {
             $var=$this->db->query("
@@ -71,7 +71,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_participaciones_desc($reunion)
         {
             $var=$this->db->query("
@@ -90,18 +90,18 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_participacion($codigo, $nombre, $puesto, $reunion, $metodo)
         {
             $this->db->query("
                 call spInsertParticipacion('$codigo', '$nombre', '$puesto', '$reunion', '$metodo')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / participacion -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- platica -------------------------------------------------------------- */
-        
+
         public function get_platicas_vigentes()
         {
             $var=$this->db->query("
@@ -119,7 +119,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_all_platicas()
         {
             $var=$this->db->query("
@@ -136,7 +136,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_platica($platica)
         {
             $var=$this->db->query("
@@ -155,25 +155,27 @@
             ");
             return $var->result();
         }
-        
+
         public function insert_platica($tema, $fecha_inicio, $fecha_final)
         {
+            $tema = trim($tema);
             $this->db->query("
                 call spInsertPlatica('$tema', '$fecha_inicio', '$fecha_final')
             ");
         }
-        
+
         public function update_platica($platica, $tema, $fecha_inicio, $fecha_final)
         {
+            $tema = trim($tema);
             $this->db->query("
                 call spUpdatePlatica('$platica', '$tema', '$fecha_inicio', '$fecha_final')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / platica -------------------------------------------------------------- */
-        
+
         /* -------------------------------------------------------------- reunion -------------------------------------------------------------- */
-        
+
         public function get_reunion($reunion)
         {
             $var=$this->db->query("
@@ -192,7 +194,7 @@
             ");
             return $var->result();
         }
-        
+
         public function get_reuniones($usuario)
         {
             $var=$this->db->query("
@@ -210,13 +212,12 @@
                     p.id_platica as id_platica
                 FROM reunion r
                 INNER JOIN platica p on p.id_platica=r.reu_id_platica
-               WHERE r.reu_id_supervisor='$usuario' and (SELECT count(*) FROM participacion a inner join 
-reunion b on a.par_id_reunion=b.id_reunion where b.id_reunion=r.id_reunion)>0
+               WHERE r.reu_id_supervisor='$usuario' and (SELECT count(*) FROM participacion a inner join reunion b on a.par_id_reunion=b.id_reunion where b.id_reunion=r.id_reunion)>0
                 ORDER BY r.reu_create_time DESC
             ");
             return $var->result();
         }
-        
+
         public function get_temas_registrados($supervisor)
         {
             $var=$this->db->query("
@@ -228,7 +229,7 @@ reunion b on a.par_id_reunion=b.id_reunion where b.id_reunion=r.id_reunion)>0
             ");
             return $var->result();
         }
-        
+
         public function get_busqueda_reunion($filtro)
         {
             $q="SELECT
@@ -244,76 +245,74 @@ reunion b on a.par_id_reunion=b.id_reunion where b.id_reunion=r.id_reunion)>0
                     p.id_platica as id_platica,
                     p.pla_tema as tema
                 FROM reunion r
-                INNER JOIN platica p on p.id_platica=r.reu_id_platica
-                ".$filtro."
-                ORDER BY r.reu_semana DESC, r.reu_fecha DESC";
-            
+                INNER JOIN platica p on p.id_platica=r.reu_id_platica " . $filtro . " ORDER BY r.reu_semana DESC, r.reu_fecha DESC, r.reu_hora ASC, r.reu_supervisor ASC";
+
             $var=$this->db->query($q);
             return $var->result();
         }
-        
+
         public function insert_reunion($fecha, $hora, $semana, $empresa, $id_usuario, $nombre_usuario, $platica)
         {
             $this->db->query("
                 call spInsertReunion('$fecha', '$hora', '$semana', '$empresa', '$id_usuario', '$nombre_usuario', '$platica')
             ");
         }
-        
+
         public function update_reunion($id, $fecha, $hora, $semana, $empresa)
         {
             $this->db->query("
                 call spUpdateReunion('$id', '$fecha', '$hora', '$semana', '$empresa')
             ");
         }
-        
+
         /* -------------------------------------------------------------- / reunion -------------------------------------------------------------- */
-        
+
         public function update_trabajo($id,$familia,$equipo,$inicio,$turno,$descripcion,$termino,$pendientes,$usuario,$personal)
         {
             $this->db->query("
                 call spUpdateTrabajo('$id','$familia','$equipo','$inicio','$turno','$descripcion','$termino','$pendientes','$usuario','$personal')
             ");
         }
-        
+
         public function delete_trabajo($trabajo,$opcion)
         {
             $this->db->query("
                 call spUDeleteTrabajo('$trabajo','$opcion')
             ");
         }
-        
+
         /* -------------------------------------------------------------- API WEB -------------------------------------------------------------- */
-        
+
         public function get_empleado_codigo($codigo)
         {
-            $ch = curl_init(); 
+            $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/DatosxEmpleado");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos jala
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"Codigo=$codigo");
-	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$output = curl_exec($ch); // la variable output contiene el json raw
-            
+
             $data=json_decode($output);
-            
+
             return $data;
         }
-        
+
         public function get_empleado_tarjeta($codigo)
         {
-            $ch = curl_init(); 
+            $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/VAutEmp");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos jala
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"CardNumber=$codigo");
-	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$output = curl_exec($ch); // la variable output contiene el json raw
-            
+
             $data=json_decode($output);
-            
+
             return $data;
         }
-        
+
         /* -------------------------------------------------------------- /API WEB -------------------------------------------------------------- */
     }
 ?>
