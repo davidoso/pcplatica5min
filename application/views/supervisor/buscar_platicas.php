@@ -3,7 +3,6 @@
         <!-- BODY -->
 
             <div class="container my-3">
-
                 <!-- Busqueda -->
                 <form role="form" action="<?php echo site_url('Supervisor/buscar_platicas'); ?>" method="get">
                     <div class="row mt-5">
@@ -13,8 +12,8 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text rounded-0" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 </div>
-                                <select class="custom-select rounded-0" name="t" id="familia">
-                                    <option value="-1" selected>Todos</option>
+                                <select class="custom-select rounded-0" name="t">
+                                    <option value="-1" selected>[Todos los temas]</option>
                                 <?php
                                     foreach($platicas as $p)
                                     {
@@ -26,9 +25,9 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2 mt-1">
-                            <label class="font-weight-bold"></label>
-                            <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fa fa-search"></i> Buscar</button>
+                        <div class="col-md-2 mt-2">
+                            <br>
+                            <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fa fa-fw fa-search"></i> Buscar</button>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -38,7 +37,7 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text rounded-0" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 </div>
-                                <input type="date" class="form-control rounded-0" name="fi" value="" placeholder="Buscar por tema" aria-describedby="basic-addon1">
+                                <input type="date" class="form-control rounded-0" name="fi" value="" placeholder="Fecha de inicio" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -47,7 +46,7 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text rounded-0" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 </div>
-                                <input type="date" class="form-control rounded-0" name="ft" value="" placeholder="Buscar por tema" aria-describedby="basic-addon1">
+                                <input type="date" class="form-control rounded-0" name="ft" value="" placeholder="Fecha de término" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -68,7 +67,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="table-responsive mt-4">
-                        <table class="table table-hover">
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center align-middle">Semana</th>
@@ -84,7 +83,7 @@
                                 foreach ($resultados as $r)
                                 {
                             ?>
-                                <tr <?php if($p->estatus=='VENCIDA'){echo 'class="table-danger"';} ?> >
+                                <tr>
                                     <td class="text-center align-middle"><?php echo $r->semana; ?></td>
                                     <td class="text-center align-middle"><?php echo $r->tema; ?></td>
                                     <td class="text-center align-middle"><?php echo $r->fecha; ?></td>

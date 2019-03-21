@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fa fa-search"></i> Buscar</button>
+                            <button type="submit" class="btn btn-warning btn-block rounded-0"><i class="fa fa-fw fa-search"></i> Buscar</button>
                         </div>
                     </div>
                 </form>

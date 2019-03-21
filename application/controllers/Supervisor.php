@@ -103,6 +103,43 @@
             return $w;
         }
 
+        public function reporte_platicas() // ver el reporte de pláticas en determinado rango de fechas
+        {
+            if ($this->session->userdata('usuario')!=NULL)
+            {
+                $this->load->model('Supervisor_m');
+                $array=array(
+                    'supervisores'=>$this->Supervisor_m->get_supervisores()
+                );
+                $array_footer=array(
+                    'reporte_platicas_js'=>true
+                );
+
+                $this->load->view('recursos/header');
+                $this->load->view($this->definir_navbar());
+                $this->load->view('supervisor/reporte_platicas', $array);
+                $this->load->view('recursos/footer', $array_footer);
+            }
+            else
+            {
+                redirect('Login');
+            }
+        }
+
+        public function reporte_buscar() // obtener resultados y mostrar en la tabla
+        {
+            if ($this->session->userdata('usuario')!=NULL)
+            {
+                $this->load->model('Supervisor_m', 'sm');
+                $result = $this->sm->get_reporte();
+                echo json_encode($result);
+            }
+            else
+            {
+                redirect('Login');
+            }
+        }
+
         public function platicas_registradas() // ver las pláticas disponibles
         {
             if ($this->session->userdata('usuario')!=NULL)

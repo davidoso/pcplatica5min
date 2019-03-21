@@ -7,7 +7,7 @@
         <base href="<?php echo base_url();?>">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/png" href="assets/img/checklist.ico">
+        <link rel="shortcut icon" type="image/png" href="assets/img/number5.ico">
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">

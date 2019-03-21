@@ -174,6 +174,44 @@
 
         /* -------------------------------------------------------------- / platica -------------------------------------------------------------- */
 
+        /* -------------------------------------------------------------- reporte -------------------------------------------------------------- */
+
+        public function get_supervisores()
+        {
+            $var=$this->db->query("
+                SELECT r.reu_id_supervisor as sup_id, r.reu_supervisor as sup_nombre
+                FROM reunion r
+                GROUP BY r.reu_id_supervisor
+                ORDER BY r.reu_supervisor ASC
+            ");
+            return $var->result();
+        }
+
+        public function get_reporte()
+        {
+            $fi = $this->input->post('fi');
+            $ft = $this->input->post('ft');
+            $clave_supervisor = $this->input->post('supervisor');
+            $where = "WHERE x.fecha_iso BETWEEN '$fi' AND '$ft'";
+
+            if($clave_supervisor != -1) { // -1 es la opción para Todos los supervisores
+                $where = $where . " AND x.clave_supervisor ='$clave_supervisor'";
+            }
+
+            $query = "SELECT * FROM
+                (SELECT WEEK(c.pla_fecha_inicio,1) AS semana, EXTRACT(year FROM a.par_create_time) AS anio, c.pla_fecha_inicio AS fecha_iso, DATE_FORMAT(c.pla_fecha_inicio, '%d/%m/%Y') AS fecha, CASE when par_codigo_empelado=0 then '-' else par_codigo_empelado END AS codigo, CASE when par_codigo_empelado=0 then 'CONTRATISTA' else 'PEÑA COLORADA' END AS empresa, upper(a.par_empleado) AS empleado, upper(a.par_puesto) AS puesto, c.pla_tema AS platica, b.reu_id_supervisor AS clave_supervisor, b.reu_supervisor AS supervisor
+                FROM platicas_db.participacion a INNER JOIN platicas_db.reunion b on a.par_id_reunion=b.id_reunion
+                INNER JOIN platicas_db.platica c on c.id_platica=b.reu_id_platica ) AS x " . $where .
+                " GROUP BY x.codigo, x.empresa, x.empleado, x.puesto, x.platica, x.clave_supervisor
+                ORDER BY x.fecha_iso DESC, x.platica ASC, x.supervisor ASC, x.empresa ASC, x.puesto ASC, x.empleado ASC
+                LIMIT 20000";
+
+            $var=$this->db->query($query);
+            return $var->result();
+        }
+
+        /* -------------------------------------------------------------- / reporte -------------------------------------------------------------- */
+
         /* -------------------------------------------------------------- reunion -------------------------------------------------------------- */
 
         public function get_reunion($reunion)

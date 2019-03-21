@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
     <head>
-
+        <title>Pláticas 5 Minutos</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <base href="<?php echo base_url();?>">
 
-        <title>Peña Colorada</title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/png" href="assets/img/pc-logo-01.ico">
 
         <!-- Bootstrap core CSS -->
-        <link href="<?php echo base_url('assets/vendor/css/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
 
+        <!-- Login style -->
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/bglogin.css"> -->
     </head>
