@@ -52,7 +52,7 @@
 			),
 		);
 
-		// NOTE: max_input_vars changed from 1000 variables to 300000 and post_max_size from 2MB to 50MB in php.ini
+		// NOTE: max_input_vars changed from 1000 variables to 300,000 and post_max_size from 2MB to 50MB in php.ini
 		// because POST sliced the array at 1000 elements (100 rows, 10 keys each)
         $fi = $_POST['fi'];
 		$ft = $_POST['ft'];
