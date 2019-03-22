@@ -55,7 +55,17 @@
                                 <div class="input-group-prepend">
                                 <span class="input-group-text rounded-0" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 </div>
-                                <input type="text" class="form-control rounded-0" name="s" value="" placeholder="Ej. gcuevas" aria-describedby="basic-addon1">
+                                <select class="custom-select rounded-0" name="s">
+                                    <option value="-1" selected>[Todos los supervisores]</option>
+                                <?php
+                                    foreach($supervisores as $sup)
+                                    {
+                                ?>
+                                    <option value="<?php echo $sup->sup_id ?>"><?php echo $sup->sup_nombre; ?></option>
+                                <?php
+                                    } // foreach de supervisores
+                                ?>
+                                </select>
                             </div>
                         </div>
                     </div>

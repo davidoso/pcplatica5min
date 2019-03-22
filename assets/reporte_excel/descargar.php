@@ -54,8 +54,11 @@
 
 		// NOTE: max_input_vars changed from 1000 variables to 300,000 and post_max_size from 2MB to 50MB in php.ini
 		// because POST sliced the array at 1000 elements (100 rows, 10 keys each)
-        $fi = $_POST['fi'];
-		$ft = $_POST['ft'];
+
+		$fi_date = date_create($_POST['fi']);
+		$fi = date_format($fi_date, 'd/m/Y');
+		$ft_date = date_create($_POST['ft']);
+		$ft = date_format($ft_date, 'd/m/Y');
 		$supervisor_select = $_POST['supervisor_select'];
 		$anio = $_POST['anio'];
 		$semana = $_POST['semana'];

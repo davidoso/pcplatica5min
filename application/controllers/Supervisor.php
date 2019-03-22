@@ -57,6 +57,7 @@
 
                 $this->load->model('Supervisor_m');
                 $array=array(
+                    'supervisores'=>$this->Supervisor_m->get_supervisores(),
                     'platicas'=>$this->Supervisor_m->get_all_platicas(),
                     'resultados'=>$this->Supervisor_m->get_busqueda_reunion($filtro)
                 );
@@ -95,7 +96,7 @@
                 $w=$w." AND p.id_platica='".$t."'";
             }
 
-            if ($s != NULL)
+            if ($s != NULL &&  $s != -1)
             {
                 $w=$w." AND r.reu_id_supervisor='".$s."'";
             }
