@@ -83,8 +83,8 @@
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(10);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(50);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(50);
-		$objPHPExcel->getActiveSheet()->setCellValue('A1', "Fecha inicio:");
-		$objPHPExcel->getActiveSheet()->setCellValue('A2', "Fecha término:");
+		$objPHPExcel->getActiveSheet()->setCellValue('A1', "Fecha de inicio:");
+		$objPHPExcel->getActiveSheet()->setCellValue('A2', "Fecha de término:");
 		$objPHPExcel->getActiveSheet()->setCellValue('A3', "Supervisor:");
 		$objPHPExcel->getActiveSheet()->setCellValue('B1', $fi);
 		$objPHPExcel->getActiveSheet()->setCellValue('B2', $ft);
