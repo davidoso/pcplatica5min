@@ -283,7 +283,7 @@
                     p.id_platica as id_platica,
                     p.pla_tema as tema
                 FROM reunion r
-                INNER JOIN platica p on p.id_platica=r.reu_id_platica " . $filtro . " ORDER BY r.reu_semana DESC, r.reu_fecha DESC, r.reu_hora ASC, r.reu_supervisor ASC";
+                INNER JOIN platica p on p.id_platica=r.reu_id_platica " . $filtro . " ORDER BY r.reu_fecha DESC, r.reu_semana DESC, r.reu_hora ASC, r.reu_supervisor ASC";
 
             $var=$this->db->query($q);
             return $var->result();

@@ -43,12 +43,12 @@ $('#btn_buscar').click(function() {
                 $('body').css('cursor', 'auto');
             }
         });
-    }
+    } // if(validDate())
 }); // btn_buscar click
 
 $('#btn_descargar').click(function() {
     if(validDate()) {
-	    $('body').css('cursor', 'wait');
+        $('body').css('cursor', 'wait');
         var data = $('#report_form').serialize();
 
         $.ajax({
@@ -57,6 +57,37 @@ $('#btn_descargar').click(function() {
 		    url: "index.php/Supervisor/reporte_buscar",
             data: data,
             success: function(data) {
+                // console.log(data);
+                var fi = $('#fi').val();
+                var ft = $('#ft').val();
+                var supervisor_select = $('#supervisor option:selected').text();
+                var inputs = '<input type="text" name="fi" value="' + fi + '">' +
+                    '<input type="text" name="ft" value="' + ft + '">' +
+                    '<input type="text" name="supervisor_select" value="' + supervisor_select + '">';
+                for(var i = 0; i < data.length; i++) {
+                    inputs = inputs +
+                    '<input type="text" name="anio[]" value="' + data[i].anio + '">' +
+                    '<input type="text" name="semana[]" value="' + data[i].semana + '">' +
+                    '<input type="text" name="fecha[]" value="' + data[i].fecha + '">' +
+                    '<input type="text" name="platica[]" value="' + data[i].platica + '">' +
+                    '<input type="text" name="clave_supervisor[]" value="' + data[i].clave_supervisor + '">' +
+                    '<input type="text" name="supervisor[]" value="' + data[i].supervisor + '">' +
+                    '<input type="text" name="empresa[]" value="' + data[i].empresa + '">' +
+                    '<input type="text" name="codigo[]" value="' + data[i].codigo + '">' +
+                    '<input type="text" name="empleado[]" value="' + data[i].empleado + '">' +
+                    '<input type="text" name="puesto[]" value="' + data[i].puesto + '">';
+                }
+
+                if(document.getElementById('formDownload'))
+                    $('#formDownload').remove();
+                // Build form (hide keeps it from being visible)
+                $form = $('<form/>').attr({id: 'formDownload', method: 'POST', action: 'assets/reporte_excel/descargar.php'}).hide();
+                // Add inputs to form
+                $form.append(inputs);
+                // Add form to the document body
+                $('body').append($form);
+                // Submit the form and PHPExcel should open a dialog to download the file
+                $form.submit();
                 $('body').css('cursor', 'auto');
             },
             error: function() {
@@ -64,7 +95,7 @@ $('#btn_descargar').click(function() {
                 $('body').css('cursor', 'auto');
             }
         });
-    }
+    } // if(validDate())
 }); // btn_descargar click
 
 function validDate() {
