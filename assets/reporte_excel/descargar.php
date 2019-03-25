@@ -123,7 +123,7 @@
 		ob_end_clean();
 		//header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 		header("Content-Type: application/vnd.ms-excel");
-		header("Content-Disposition: attachment; filename='Reporte Historial de Pláticas.xlsx'");
+		header("Content-Disposition: attachment; filename=Reporte Historial de Pláticas.xlsx");
 		header("Cache-Control: max-age=0");
 
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
