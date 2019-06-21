@@ -29,7 +29,7 @@
         public function login_apiweb($usuario, $contrasena)
         {
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/Valida_Usuario");
+            curl_setopt($ch, CURLOPT_URL, "http://vadaexterno:8080/wsAutEmp/Service1.asmx/Valida_Usuariomw");
             curl_setopt($ch, CURLOPT_POST, 1); //se puede comentar y de todos modos funciona
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
             curl_setopt($ch, CURLOPT_POSTFIELDS,"usuario=$usuario&contrasena=$contrasena");

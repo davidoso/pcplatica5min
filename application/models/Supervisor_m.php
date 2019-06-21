@@ -114,7 +114,7 @@
                     p.pla_create_time as create_time,
                     p.pla_erased as erased
                 FROM platica p
-                WHERE p.pla_erased=0 AND p.pla_estatus='VIGENTE'
+                WHERE p.pla_erased=0 AND CURDATE() >= pla_fecha_inicio AND CURDATE() <= pla_fecha_final
                 ORDER BY p.pla_create_time DESC
             ");
             return $var->result();

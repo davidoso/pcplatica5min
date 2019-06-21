@@ -20,7 +20,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0" id="basic-addon1"><i class="fa fa-calendar-alt"></i></span>
                                 </div>
-                                <input type="date" class="form-control rounded-0" name="fecha" value="<?php echo date('Y-m-d'); ?>" required>
+                                <input type="date" class="form-control rounded-0" name="fecha" value="<?php echo date('Y-m-d'); ?>" required disabled>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0" id="basic-addon1"><i class="far fa-clock"></i></span>
                                 </div>
-                                <input type="time" class="form-control rounded-0" name="hora" value="<?php echo date('H:i:00'); ?>" required>
+                                <input type="time" class="form-control rounded-0" name="hora" value="<?php echo date('H:i:00'); ?>" required disabled>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0" id="basic-addon1"><i class="far fa-clock"></i></span>
                                 </div>
-                                <input type="number" class="form-control rounded-0" name="semana" value="<?php echo date('W'); ?>" required>
+                                <input type="number" class="form-control rounded-0" name="semana" value="<?php echo date('W'); ?>" required disabled>
                             </div>
                         </div>
                     </div>
